@@ -1,13 +1,25 @@
 import Vue from 'vue'
 
-import {Button} from 'elemnt-ui'
-import {Form,FormItem} from 'elemnt-ui'
-import {Input} from 'elemnt-ui'
-import {Message} from 'elemnt-ui'
+import {
+    Button,
+    Message,
+    Form,
+    FormItem,
+    Input,
+    Container,
+    Header,
+    Aside,
+    Main
+} from 'elemnt-ui'
+
 
 
 Vue.use(Button)
 Vue.use(Form)
 Vue.use(FormItem)
 Vue.use(Input)
-Vue.prototype.$message=Message
+Vue.use(Container)
+Vue.use(Header)
+Vue.use(Aside)
+Vue.use(Main)
+Vue.prototype.$message = Message
