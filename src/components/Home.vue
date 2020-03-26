@@ -8,7 +8,7 @@
     <el-container>
       <el-aside :width="isCollapse? '64px':'200px'">
         <div class="toggleBur" @click="toggleCollapse">|||</div>
-        <el-menu background-color="#333744" text-color="#fff" active-text-color="#409eff" unique-opened :collapse="isCollapse" :collapse-transition="false">
+        <el-menu background-color="#333744" text-color="#fff" active-text-color="#409eff" unique-opened :collapse="isCollapse" :collapse-transition="false" router :default-active="$route.path">
           <!-- 一级菜单 -->
           <!-- index只能绑定字符串，index为数值，后面加空字符串变成字符串 -->
           <el-submenu :index="index+''" v-for="(item,index) in menulist" :key="item.id">
@@ -19,7 +19,8 @@
               <!-- 文字 -->
               <span>{{item.authName}}</span>
             </template>
-            <el-menu-item :index="i.id+''" v-for="i in item.children" :key="i.id">
+            <!-- 二级菜单 -->
+            <el-menu-item :index="'/'+i.path" v-for="i in item.children" :key="i.id">
               <i class="el-icon-menu"></i>
               <!-- 文字 -->
               <span>{{i.authName}}</span>
@@ -108,4 +109,5 @@ export default {
   letter-spacing: 0.25em;
   cursor: pointer;
 }
+
 </style>

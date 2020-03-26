@@ -9,7 +9,9 @@ import {
     Container,
     Header,
     Aside,
-    Main
+    Main,
+    Breadcrumb,
+    BreadcrumbItem
 } from 'elemnt-ui'
 
 
@@ -22,4 +24,6 @@ Vue.use(Container)
 Vue.use(Header)
 Vue.use(Aside)
 Vue.use(Main)
+Vue.use(Breadcrumb)
+Vue.use(BreadcrumbItem)
 Vue.prototype.$message = Message
