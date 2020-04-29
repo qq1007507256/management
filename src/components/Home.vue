@@ -6,7 +6,8 @@
       <el-button type="info" @click="logout">退出</el-button>
     </el-header>
     <el-container>
-      <el-aside :width="isCollapse? '64px':'200px'">
+      <el-aside :width="isCollapse?'64px':'200px'">
+        <!-- 收缩左侧菜单 -->
         <div class="toggleBur" @click="toggleCollapse">|||</div>
         <el-menu background-color="#333744" text-color="#fff" active-text-color="#409eff" unique-opened :collapse="isCollapse" :collapse-transition="false" router :default-active="$route.path">
           <!-- 一级菜单 -->
@@ -19,7 +20,7 @@
               <!-- 文字 -->
               <span>{{item.authName}}</span>
             </template>
-            <!-- 二级菜单 -->
+            <!-- 二级菜单 item为一级菜单的item 开启了路由模式 路由为index的值-->
             <el-menu-item :index="'/'+i.path" v-for="i in item.children" :key="i.id">
               <i class="el-icon-menu"></i>
               <!-- 文字 -->
@@ -59,10 +60,9 @@ export default {
     getMenuList() {
       this.$http.get("menus").then(res => {
         // console.log(res.data.data);
-        if (res.data.meta.status !== 200)
-          return this.$message.error(res.data.meta.msg);
+       
         this.menulist = res.data.data;
-      })
+      }).catch(err=>{return this.$message.error(res.data.meta.msg);})
     },
     toggleCollapse(){
        this.isCollapse=!this.isCollapse
